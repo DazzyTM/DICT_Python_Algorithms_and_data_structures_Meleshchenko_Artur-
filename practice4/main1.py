@@ -1,0 +1,71 @@
+from class_generator import Generator
+from practice4 import ParrotListBasic, ParrotListExtended, ParrotListBonus
+
+if __name__ == "__main__":
+    g = Generator()
+    parrot = [g.generate_single()[0]for i in range(5)]
+    for i in parrot:
+        print(i)
+    print("Basic:")
+    print("------------------------")
+    basic = ParrotListBasic()
+    basic.append(parrot[0])
+    basic.append(parrot[1])
+    basic.append(parrot[2])
+    print(basic.__len__())
+    basic.insert(1, parrot[3])
+    basic.insert(0, parrot[4])
+    print(basic)
+    print(basic.__len__())
+    print(basic.index(parrot[2]))
+    basic.remove(parrot[2])
+    print(basic)
+    print(basic.__len__())
+    print("------------------------")
+    print("Extended:")
+    print("------------------------")
+    extended = ParrotListExtended()
+    extended.append(parrot[0])
+    extended.append(parrot[1])
+    extended.append(parrot[2])
+    print(extended.__len__())
+    extended.clear()
+    print(extended.__len__())
+    extended.append(parrot[0])
+    extended.append(parrot[1])
+    extended.append(parrot[2])
+    parrot_list_copy = extended.copy()
+    for q in extended:
+        print(q)
+    del extended[1]
+    print("List of parrots after element removal:")
+    for q in extended:
+        print(q)
+    extended.extend(g.generate_single() for _ in range(1))
+    print("List of parrots after extension:")
+    for q in extended:
+        print(q)
+    popped_parrot = extended.pop(2)
+    print("Removed item:")
+    print(popped_parrot)
+    extended.reverse()
+    print("Reversed list:")
+    for q in extended:
+        print(q)
+    count = extended.count(extended[0])
+    print(f"Number of occurrences: {count}")
+    print("------------------------")
+    print("Bonus:")
+    print("------------------------")
+    bonus = ParrotListBonus()
+    bonus.append(parrot[0])
+    bonus.append(parrot[1])
+    bonus.append(parrot[2])
+    print(bonus)
+    print(bonus.__len__())
+    bonus_copy = bonus.deepcopy()
+    print(bonus_copy)
+    parrot_list_sum = bonus + bonus_copy
+    print(parrot_list_sum)
+    parrot_list_mul = bonus * 3
+    print(">", parrot_list_mul)
