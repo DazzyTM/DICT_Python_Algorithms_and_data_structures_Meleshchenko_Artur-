@@ -1,0 +1,41 @@
+from class_generator import Generator
+from abstractlimitstructure_p5 import Stack, PriorQueue
+
+if __name__ == "__main__":
+  g = Generator()
+  parrot = [g.generate_single()[0] for i in range(5)]
+  for i in parrot:
+      print(i)
+  print("Stack:")
+  stack = Stack()
+  stack.push(parrot[0])
+  stack.push(parrot[1])
+  stack.push(parrot[2])
+  print(stack)
+  print(stack.top())
+  print(stack.pop())
+  stack.push(parrot[3])
+  stack.push(parrot[4])
+  print(stack)
+  print(stack.pop())
+  print(stack.pop())
+  print(stack)
+  print("Priority queue:")
+  queue = PriorQueue()
+  queue.enqueue(parrot[0])
+  queue.enqueue(parrot[1])
+  queue.enqueue(parrot[2])
+  print("Is empty:", queue.is_empty())
+  print("Size:", queue.size())
+  print("Peek:", queue.peek())
+  dequeued_parrot = queue.dequeue()
+  print("Dequeued parrot:", dequeued_parrot)
+  queue.enqueue(parrot[3])
+  queue.enqueue(parrot[4])
+  print("Size:", queue.size())
+  dequeued_parrot = queue.dequeue()
+  print("Dequeued parrot:", dequeued_parrot)
+  dequeued_parrot = queue.dequeue()
+  print("Dequeued parrot:", dequeued_parrot)
+  print("Size:", queue.size())
+  
